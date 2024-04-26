@@ -1,5 +1,6 @@
-using Salon.Data;
+
 using Microsoft.EntityFrameworkCore;
+using Salon.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Svi se od svuda na sve moguæe naèine mogu spojitina naš API
+// Èitati https://code-maze.com/aspnetcore-webapi-best-practices/
 builder.Services.AddCors(opcije =>
 {
     opcije.AddPolicy("CorsPolicy",
@@ -19,8 +22,9 @@ builder.Services.AddCors(opcije =>
 
 });
 
-builder.Services.AddDbContext<SalonContext>(o =>
-{
+
+// Dodavanje baze podataka
+builder.Services.AddDbContext<SalonContext>(o => {
     o.UseSqlServer(builder.Configuration.GetConnectionString("SalonContext"));
 });
 
@@ -44,9 +48,12 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseCors("CorsPolicy");
 
+// za potrebe produkcije
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
+// završio za potrebe produkcije
 
 app.Run();

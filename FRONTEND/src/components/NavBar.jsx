@@ -26,7 +26,7 @@ export default function NavBar() {
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav className='me-auto'>
               <Nav.Link
-                href=''
+                href='https://fiire01-001-site1.htempurl.com/swagger/index.html'
                 target='_blank'
               >
                 API

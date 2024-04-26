@@ -1,7 +1,7 @@
 export const RoutesNames = {
   HOME: '/',
 
-  USLUGA_PREGLED: '/usluge',
-  USLUGA_NOVI: '/usluge/dodaj',
-  USLUGA_PROMJENI: '/usluge/:sifra',
+  USLUGA_PREGLED: '/Usluga',
+  USLUGA_NOVI: '/Usluga/dodaj',
+  USLUGA_PROMJENI: '/Usluga/:sifra',
 };
